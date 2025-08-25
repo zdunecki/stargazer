@@ -17,6 +17,10 @@ on:
         description: "Duration (seconds)"
         required: false
         default: "15"
+      gdpr:
+        description: "GDPR mode"
+        required: false
+        default: false
 name: Render video
 jobs:
   render:
