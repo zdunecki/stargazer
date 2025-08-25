@@ -1,4 +1,4 @@
-import { Img, useVideoConfig } from "remotion";
+import { getInputProps, Img, useVideoConfig } from "remotion";
 import { Stargazer } from "./cache";
 import { RepoHeader } from "./repo-header";
 
@@ -77,6 +77,8 @@ function StarBox({
   readonly grow: number;
   readonly opacity: number;
 }) {
+  const remotionProps = getInputProps()
+
   const d = new Date(date);
   const dateString = d.toLocaleDateString("en-US", {
     month: "short",
@@ -107,7 +109,10 @@ function StarBox({
         width="64"
         height="64"
         src={avatarUrl}
-        style={{ borderRadius: "50%" }}
+        style={{ 
+          borderRadius: "50%",
+          filter: remotionProps?.gdpr ? "blur(18px)" : undefined
+         }}
       />
       <div
         style={{
